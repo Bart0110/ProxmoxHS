@@ -19,14 +19,12 @@ variables
 color
 catch_errors
 
-custom_app_settings() {
+function custom_app_settings() {
   BESZEL_PORT=$(whiptail --title "Connection setup" \
       --inputbox "Enter the port which the Beszel Hub connects to (default: 45876)" 10 72 "45876" 3>&1 1>&2 2>&3)
   BESZEL_SSH_KEY=$(whiptail --title "Connection setup" \
       --inputbox "Enter your Beszel SSH key" 10 72 3>&1 1>&2 2>&3)
 }
-
-custom_app_settings
 
 function update_script() {
   header_info
@@ -56,6 +54,7 @@ function update_script() {
 }
 
 start
+custom_app_settings
 build_container
 description
 
