@@ -6,6 +6,15 @@
 # Source: https://beszel.dev/ | Github: https://github.com/henrygd/beszel
 
 source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
+
+function custom_app_settings() {
+  BESZEL_PORT=$(whiptail --title "Connection setup" \
+      --inputbox "Enter the port which the Beszel Hub connects to (default: 45876)" 10 72 "45876" 3>&1 1>&2 2>&3)
+  BESZEL_SSH_KEY=$(whiptail --title "Connection setup" \
+      --inputbox "Enter your Beszel SSH key" 10 72 3>&1 1>&2 2>&3)
+}
+custom_app_settings
+
 color
 verb_ip6
 catch_errors
